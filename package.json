@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/DhavalW/hashplayin/issues"
   },
-  "homepage": "https://github.com/DhavalW/hashplayin#readme"
+  "homepage": "https://github.com/DhavalW/hashplayin#readme",
+  "dependencies": {
+    "express": "^4.14.1"
+  }
 }
