@@ -15,7 +15,7 @@ var http = require('http')
 // 	res.send('<h1>Hello world</h1>');
 // });
 app.get('/', express.static(__dirname +'/www/' /*, { maxAge: oneDay }*/ ));
-app.get('/DIYDM', express.static(__dirname +'/www/diydm/' /*, { maxAge: oneDay }*/ ));
+app.use('/DIYDM', express.static(__dirname +'/www/diydm/' /*, { maxAge: oneDay }*/ ));
 
 var oneDay = 86400000;
 
