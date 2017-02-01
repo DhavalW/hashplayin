@@ -15,7 +15,12 @@ var http = require('http')
 // 	res.send('<h1>Hello world</h1>');
 // });
 app.get('/', express.static(__dirname +'/www/' /*, { maxAge: oneDay }*/ ));
+app.use('/static', express.static(__dirname + '/www/static' /*, { maxAge: oneDay }*/ ));
+app.use('/node_modules', express.static(__dirname + '/www/node_modules' /*, { maxAge: oneDay }*/ ));
+
 app.use('/DIYDM', express.static(__dirname +'/www/diydm/' /*, { maxAge: oneDay }*/ ));
+app.use('/DIYDM/static', express.static(__dirname + '/www/diydm/static' /*, { maxAge: oneDay }*/ ));
+app.use('/DIYDM/node_modules', express.static(__dirname + '/www/diydm/node_modules' /*, { maxAge: oneDay }*/ ));
 
 var oneDay = 86400000;
 
@@ -25,8 +30,6 @@ var oneDay = 86400000;
 // console.log('/sfui/demos/calculator\t=\t'+__dirname + '/clients/demos/calculator');
 
 // app.use('/demos/calculator', express.static(__dirname + '/www/demos/calculator' /*, { maxAge: oneDay }*/ ));
-// app.use('/static', express.static(__dirname + '/www/static' /*, { maxAge: oneDay }*/ ));
-// app.use('/node_modules', express.static(__dirname + '/www/node_modules' /*, { maxAge: oneDay }*/ ));
 
 
 
