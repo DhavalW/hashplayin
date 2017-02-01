@@ -1,0 +1,17 @@
+.hp-textinput-blinking {
+	width:100%;
+	background-color: transparent;
+	border:none;
+	border-bottom:1px white solid;
+	font-size:300%;
+}
+
+.hp-textinput-blinking:focus {
+	outline:none;
+	color: brown;
+}
+
+body {
+	background-color: gray;
+	color:white;
+}

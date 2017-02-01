@@ -1,18 +1,32 @@
 <html>
-<body>
-	<div class="container">
-		<div class="row" style="height:50em;">
+<body ng-app="hashplayin">
+	<div ng-controller="mainController" class="container" style="height:100%;">
+		<div class="row" style="height:20%; ">
 		</div>
 		<div class="row">
-			<div class="col-sm-4 col-sm-offset-4">
-				<h1> Welcome to Hashplay.in ! </h1>
-				<button class="btn btn-primary"> Bootstrap is on ! </button>
+			<div class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
+				<h1 style="font-size:5em;font-weight:bold">hashPlay.in</h1>
+				<h4>a revolutionary new</h4><h4> <span style="color:black; font-weight: bold; font-size:1.1em;">Artiste</span> -> <span style="color:firebrick; font-weight: bold;  font-size:1.1em;">Fan</span> platform </h4>
+			</div>
+		</div>
+		<div class="row" style="margin-top:10%;">
+			<div class="col-xs-12 col-sm-8 col-sm-offset-2 text-center">
+				<!-- <h3 style="font-size:2.5em;font-weight:bold">Coming soon !</h3> -->
+				<!-- <h3 style="font-weight:bold">Name a music band you love & press enter</h3> -->
+				<input style="text-align:center" class="hp-textinput-blinking" ng-keypress="keypressActionArtiste($event)" ng-blur="blurActionArtiste()" ng-model="visitor.artisteName" type="text" ng-change="inputChangeArtiste()" placeholder="Enter your stage / band name"></input>
+				<ul class="list-inline">
+					<li><input style="text-align:center" class="hp-textinput-blinking" ng-keypress="keypressAction($event)" ng-model="visitor.name" type="text" placeholder="Your first name" ng-show="display.showEmailInput"></input></li>
+					<li><input style="text-align:center" class="hp-textinput-blinking" ng-keypress="keypressAction($event)" ng-model="visitor.emailId" type="text" placeholder="email Id" ng-show="display.showEmailInput"></input></li>
+				</ul>
 			</div>
 		</div>
 	</div>
 
 	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"></link>
+	<link rel="stylesheet" href="static/hp.css"></link>
 
-	<!-- <script src="node_modules/angular/angular.js"></script> -->
+	<script src="node_modules/angular/angular.js"></script>
+	<script src="static/js/app.js"></script>
+	<script src="static/js/main-controller.js"></script>
 </body>
 </html>
