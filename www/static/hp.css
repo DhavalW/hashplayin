@@ -1,14 +1,57 @@
 .hp-textinput-blinking {
-	width:100%;
 	background-color: transparent;
 	border:none;
 	border-bottom:1px white solid;
-	font-size:300%;
+
+}
+
+.hp-textinput-blinking:hover{
+	border-bottom:1px solid gold;
+	color:gold;
+}
+
+.hp-full-width {
+	width:100%;
+}
+
+.hp-storySelector {
+	color:firebrick;
+	font-size: 0.8em;
+	padding-left:0.5em;
+	padding-bottom:0.2em;
+}
+
+.hp-activeStory {
+	color: white;
+	font-size: 1em;
+}
+
+.hp-storySelector:hover {
+	border-bottom: solid 2px white;
+}
+.hp-storySelector-header-margins {
+	margin-top: 20px;
+	margin-bottom:20px;
 }
 
 .hp-textinput-blinking:focus {
 	outline:none;
 	color: brown;
+}
+
+.hp-textinput-heading {
+	font-size:300%;
+}
+
+.hp-textinput-subheading1{
+	font-size:200%;
+}
+.hp-textinput-subheading2{
+	font-size:150%;
+}
+
+.hp-content-spacer {
+	height:4em;
 }
 
 body {

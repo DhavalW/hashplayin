@@ -1,25 +1,106 @@
 <html>
 <body ng-app="hashplayin">
 	<div ng-controller="mainController" class="container" style="height:100%;">
-		<div class="row" style="height:20%; ">
-		</div>
-		<div class="row">
-			<div class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
-				<h1 style="font-size:5em;font-weight:bold">hashPlay.in</h1>
-				<h4>a revolutionary new</h4><h4> <span style="color:black; font-weight: bold; font-size:1.1em;">Artiste</span> -> <span style="color:firebrick; font-weight: bold;  font-size:1.1em;">Fan</span> platform </h4>
+		<!-- <input class="pull-right" ng-model="frames.number" style="color:black;position:fixed;margin-left:50%;"></input> -->
+
+		<div ng-if="frames.number == 1">
+			<div class="row" style="height:20%; ">
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-lg-6 col-lg-offset-3 text-center">
+					<h1 style="font-size:5em;font-weight:bold">hashPlay.in</h1>
+					<h4>a <span style="font-weight:bold; font-size:1.1em;">revolutionary</span> new <span style="color:black; font-weight: bold; font-size:1.1em;">Artiste</span> -> <span style="color:firebrick; font-weight: bold;  font-size:1.1em;">Fan</span> platform,</h4>
+					<br><h4> that allows you to directly reach out / market / </h4>
+					<h4> distribute / analyze / monetize your fanbase & music </h4>
+					<h4> <span style="font-weight:bold; font-size:1.1em;">like never before !</span> </h4>
+				</div>
+			</div>
+			<div class="row" style="margin-top:10%;">
+				<div class="col-xs-12 col-lg-8 col-lg-offset-2 text-center">
+					<!-- <h3 style="font-size:2.5em;font-weight:bold">Coming soon !</h3> -->
+					<h3 style="font-weight:bold">To know more :</h3>
+					<input style="text-align:center" class="hp-textinput-blinking hp-textinput-heading hp-full-width" ng-keypress="keypressActionArtiste($event)" ng-blur="blurActionArtiste()" ng-model="visitor.artisteName" type="text" ng-change="inputChangeArtiste()" placeholder="Enter your stage / band name"></input>
+					<ul class="list-inline" style="margin-top:1em;" ng-show="display.showEmailInput">
+						<li style="width:30%;"><input style="text-align:center" class="hp-textinput-blinking hp-textinput-subheading1 hp-full-width " ng-keypress="keypressAction($event)" ng-model="visitor.firstName" type="text" placeholder="Your first name" ></input></li>
+						<li style="width:50%;"><input style="text-align:center" class="hp-textinput-blinking hp-textinput-subheading1 hp-full-width" ng-keypress="keypressAction($event)" ng-model="visitor.emailId" type="text" placeholder="email Id"></input></li>
+						<li style="width:10%;"><button class="btn btn-small btn-block btn-info hp-textinput-subheading1" ng-click="onGoClick()">Go</button></li>
+					</ul>
+				</div>
 			</div>
 		</div>
-		<div class="row" style="margin-top:10%;">
-			<div class="col-xs-12 col-sm-8 col-sm-offset-2 text-center">
-				<!-- <h3 style="font-size:2.5em;font-weight:bold">Coming soon !</h3> -->
-				<!-- <h3 style="font-weight:bold">Name a music band you love & press enter</h3> -->
-				<input style="text-align:center" class="hp-textinput-blinking" ng-keypress="keypressActionArtiste($event)" ng-blur="blurActionArtiste()" ng-model="visitor.artisteName" type="text" ng-change="inputChangeArtiste()" placeholder="Enter your stage / band name"></input>
-				<ul class="list-inline">
-					<li><input style="text-align:center" class="hp-textinput-blinking" ng-keypress="keypressAction($event)" ng-model="visitor.name" type="text" placeholder="Your first name" ng-show="display.showEmailInput"></input></li>
-					<li><input style="text-align:center" class="hp-textinput-blinking" ng-keypress="keypressAction($event)" ng-model="visitor.emailId" type="text" placeholder="email Id" ng-show="display.showEmailInput"></input></li>
-				</ul>
+
+		<div ng-show="frames.number == 2">
+			<div class="col-lg-12">
+				<h1>Hey {{visitor.firstName || "[ Secretive ]"}}! ...
+				Say you, as <i>{{visitor.artisteName || "an Artiste"}} have <input ng-model="visitor.fanCount" ng-keypress="fanCountKeyPress($event)" ng-blur="fanCountBlur()" class="hp-textinput-blinking hp-textinput-subheading2 text-center" placeholder="?" style="width:4em;"></input> fans
+				<br> And you want to launch an album...
+			 	<br></i><button class="btn btn-small  btn-info hp-textinput-subheading1" ng-click="onGoClick()">Go</button></h1>
 			</div>
 		</div>
+
+		<div ng-show="frames.number >= 3" ng-keypress="cycleStage2Frames($event)"  tabindex="0" style="outline:none;">
+
+			<div class="row" style="min-height:85%;" >
+				<div class="row" style="border-bottom:solid 1px white;">
+					<div class="col-lg-12 text-center">
+						<!-- <h2> and you want to </h2> -->
+						<h1 class="hp-storySelector-header-margins">
+							<ul class="list-inline">
+								<li class="hp-storySelector" ng-click="setStory('createABuzz',1)" ng-class="{'hp-activeStory':story.track=='createABuzz'}"> Create a buzz </li>
+								<li class="hp-storySelector" ng-click="setStory('planATour',1)" ng-class="{'hp-activeStory':story.track=='planATour'}">	Plan a tour </li>
+								<li class="hp-storySelector" ng-click="setStory('tapSuperfans',1)" ng-class="{'hp-activeStory':story.track=='tapSuperfans'}"> Tap your superfans </li>
+								<li class="hp-storySelector" ng-click="setStory('raiseFunds',1)" ng-class="{'hp-activeStory':story.track=='raiseFunds'}"> Raise funds </li>
+								<li class="hp-storySelector" ng-click="setStory('growFanbase',1)" ng-class="{'hp-activeStory':story.track=='growFanbase'}"> Grow your fanbase</li>
+							</ul>
+						</h1>
+					</div>
+				</div>
+
+				<div class="row hp-content-spacer">
+				</div>
+
+
+
+				<div class="col-lg-6" ng-click="onFrameClick()">
+
+					<div class="row" ng-if="story.track == 'createABuzz' && story.version==1">
+						<h1 ng-show="frames.number == 3">Imagine <br><br>if you could reach out to all {{visitor.fanCount}} fans in one shot <br><br> without any limitations of reach...</h1>
+						<h1 ng-show="frames.number == 4">Leak a preview of your album directly on their phone's music player,<br><br> but only for a couple of days </h1>
+						<h1 ng-show="frames.number == 5">and allow them to continue listening, <br><br><b>ONLY IF</b><br><br> they tweet / post about the album to their friends</h1>
+						<h1 ng-show="frames.number == 6"> Resulting in a shout out from a {{visitor.fanCount}} strong fanbase, <br><br> i.e. - a <b><i>socially validated</i></b> exposure of your album to potentially <i><b> {{ ((visitor.fanCount * 200) - visitor.fanCount) || ' countless '}} people </b></i><br><br><span style="font-size:0.5em;">( because it came as a recommendation from their friends ) </span></h1>
+						<h1 ng-show="frames.number == 7">which makes that massive exposure<br><br> even more powerful</h1>
+					</div>
+					<div class="row" ng-if="story.track == 'planATour' && story.version==1">
+						<h1 ng-show="frames.number == 3">Next : Planning Tours<br><br>What if, planning a tour became simple enough, <br><br> to setup within a few clicks ? </h1>
+						<h1 ng-show="frames.number == 4">A few button clicks on a calendar announced your intention and preferred dates<br><br> & Event managers from across the coutry would then reach out you automatically </h1>
+						<h1 ng-show="frames.number == 5">Your hashplay.in dashboard would show which cities demanded you the most,<br><br> so you plan with managers accordingly</h1>
+						<h1 ng-show="frames.number == 6">Meanwhile, Fans use hashplay.in to check in <br><br> which keeps a track of those who took the efforts to attend </h1>
+						<h1 ng-show="frames.number == 7">allowing you to surprise them <br><br>with a meet & greet / merch / exclusive giveaways etc !</h1>
+					</div>
+					<div class="row" ng-if="story.track == 'tapSuperfans' && story.version==1">
+						<h1 ng-show="frames.number == 3"> Next : Tapping Superfans<br><br>Pareto's law states that 80% of your income <br>comes from 20% of your fans,<br><br> ie. namely your superfans</h1>
+						<h1 ng-show="frames.number == 4"> Thats about {{ visitor.fanCount / 5}} superfans for {{visitor.artisteName}} !</h1>
+						<h1 ng-show="frames.number == 5"> The problem : your superfans are hard to find and reach ! <br><br>lost somewhere in the remaining vast 80% of normal fans </h1>
+						<h1 ng-show="frames.number == 6"> What if, you could bypass normal fans & target them directly ? <br><br> have an exclusive priveleged area for updates/releases, meant only for them ? </h1>
+						<h1 ng-show="frames.number == 7"> The ones who <br><br>Attend all your gigs / check and comment on your updates regularly / champion <i>{{visitor.artisteName}}</i> wherever they go / buy your music and merch etc </h1>
+					</div>
+					<div class="row" ng-if="story.track == 'raiseFunds' && story.version==1">
+						<h1 ng-show="frames.number == 3"> Next : Raising funds <br><br>You've sold music, merchandise & gig tickets to make money <br><br> you may even be endorsed by some brand, adding to your funds</h1>
+						<h1 ng-show="frames.number == 4"> But what if you could also raise funds from your fanbase directly ? </h1>
+						<h1 ng-show="frames.number == 5"> What if your <b>{{ visitor.fanCount / 5}} superfans</b> were willing to pay a monthly subscription for access ?<br><br> say to get exclusive or priority access to you and your music ? </h1>
+						<h1 ng-show="frames.number == 6"> Even at a measly INR 100 subscription amount per month, <br><br>that can translate to <b>INR {{ (visitor.fanCount / 5) * 100 }}</b> of monthly income for {{visitor.artisteName}} ! </h1>
+						<h1 ng-show="frames.number == 7"> Of course, that means you have to keep you fans happy first ! <br><br> which means you need to reach out to the right ones at the right time, <br><br> which means : <b>hashplay.in</b> !</h1>
+					</div>
+				</div>
+				<div class="col-lg-6">
+				</div>
+			</div>
+			<div class="row text-center">
+				<h4> Press [ <span style="color:firebrick; font-weight: bold;  font-size:1.1em;">space / click</span> ] to continue, [ <span style="color:firebrick; font-weight: bold;  font-size:1.1em;">enter</span> ] to go back.</h4>
+			</div>
+
+		</div>
+
 	</div>
 
 	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"></link>
